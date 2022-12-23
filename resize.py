@@ -19,18 +19,20 @@ st.title('Resizing')
 st.header("Upload one or more images")
 uploaded_images = st.file_uploader(label='',accept_multiple_files=True)
 
-st.info("Please upload images and click on Resize button once all images are uploaded")
+st.info("Please upload images and click on **Resize** button once all images are uploaded. **Resize** button will appear after the images have been uploaded")
 
 input_dir_name = 'tmp_img'
 output_dir_name = 'resized'
 
-resize_button = st.button('Resize')
+if len(uploaded_images) > 0:
 
-if resize_button:
-    os.makedirs(input_dir_name,exist_ok=True)
-    os.makedirs(output_dir_name,exist_ok=True)
+    resize_button = st.button('Resize')
 
-    if uploaded_images is not None:
+    if resize_button:
+        os.makedirs(input_dir_name,exist_ok=True)
+        os.makedirs(output_dir_name,exist_ok=True)
+
+        
         for uploaded_file in uploaded_images:
             
             # bytes_data = uploaded_file.read()
